@@ -1,0 +1,4 @@
+@ECHO OFF
+CD 386MAX
+NMAKE
+CD ..

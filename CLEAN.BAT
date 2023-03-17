@@ -1,0 +1,4 @@
+@ECHO OFF
+DEL /Q 386MAX\COMN\*.*
+DEL /Q 386MAX\RET\*.*
+DEL /Q LIB\*.*
