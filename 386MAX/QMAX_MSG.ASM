@@ -656,7 +656,7 @@ endif				; IFDEF LANG_GR
 	 db	 '-- Version '
 else
 MSG_COPY db	 @OEM_TEXT
-	 db	 (MSG_COPY+15-$) dup (' '),'-- Version '
+	 db	' -- Version '
 endif				; IF @OEM_SYS eq @OEMSYS_OL2
 if @OEM_SYS eq @OEMSYS_HPRS
 	 db	 VERS_HP,'.0'
@@ -668,15 +668,8 @@ else
 	 db	 VERSLTR1
 endif				; IF @OEM_BETA
 	 db	 ' -- ',@OEM_SUBT,CR,LF
-	 db	 '   (C) Copyright 1987-98 Qualitas, Inc.'
-ifdef LANG_GR
-	 db	 '  Alle Rechte vorbehalten.',CR,LF
-else
-	 db	 '  GNU General Public License version 3.',CR,LF
-endif				; IFDEF LANG_GR
-if @OEM_SYS eq @OEMSYS_OLI
-	 db	 '   Copyright (C) Olivetti Inc., 1989-98  GNU General Public License version 3',CR,LF
-endif				; IF @OEM_SYS eq @OEMSYS_OLI
+	 db	 ' Source code released by Sudley Place Software under the terms of the',CR,LF
+	 db	 ' GNU General Public License version 3.',CR,LF
 	 db	 EOS
 MSG_COPYRIGHT_LEN equ $-MSG_COPYRIGHT
 

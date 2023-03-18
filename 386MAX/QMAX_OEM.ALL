@@ -26,11 +26,7 @@
 @OEMSYS_AM3	equ 22	; AMKLY for EISA (MAX w/o LOAD version)
 
 ; Localized strings
-ifdef LANG_GR
 @OEM_SUBT	 equ <'The Intelligent Memory Manager'> ; Subtitle
-else
-@OEM_SUBT	 equ <'The Intelligent Memory Manager'> ; Subtitle
-endif			; IFDEF LANG_GR
 
 if @OEM_HARPO
 @HARPONAME	 equ <'ExtraDOS    '> ; Name for SUMMARY screen

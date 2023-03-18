@@ -366,7 +366,7 @@ endif				; IF @OEM_SYS eq @OEMSYS_AST386
 if @OEM_SYS eq @OEMSYS_3COM
 MSG1	 db	 '塒様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様余',CR,LF
 else
-MSG1	 db	 '塒様様様様様様様様様様様様様 (C) Copyright 1987-98 Qualitas, Inc. 余',CR,LF
+MSG1	 db	 '塒様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様余',CR,LF
 endif				; IF @OEM_SYS eq @OEMSYS_3COM
 ROWLEN	 equ	 $-MSG1 	; Row length in message
 	 db	 EOS
