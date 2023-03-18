@@ -4413,9 +4413,10 @@ endif				; IF @OEM_DEBUG
 
 	 call	 DISP_OEM	; Display any OEM messages
 
-	 CPD	 'Calling CHECK_INFO,  CS:IP=%CS:%IP  DS=%DS  ES=%ES'
-
-	 call	 CHECK_INFO	; Check and display IDN info
+; Disable serial verification
+;	 CPD	 'Calling CHECK_INFO,  CS:IP=%CS:%IP  DS=%DS  ES=%ES'
+;
+;	 call	 CHECK_INFO	; Check and display IDN info
 	 jc	 near ptr UGH_INIT ; Jump if something went wrong
 
 if @OEM_XMS
