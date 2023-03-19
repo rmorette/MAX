@@ -9,7 +9,7 @@ H2INC	= h2inc
 HFLAGS	= /Mn /Ni
 
 # Setup based on the default OEM configuration
-OEM=BCF
+OEM=RET
 OEMTEXT=386MAX
 VXDNAME=386MAX
 VXDEXT=VXD
@@ -53,7 +53,7 @@ LH=$(MAXROOT)text\	# LOADHIGH OBJ directory
 
 OLDINC=$(INCLUDE)
 OLDMASM=$(MASM)
-ALLINC=.;$(I);$(O);$(Q);$(SDKINC);$(SWATVXD)
+ALLINC=.;$(I);$(O);$(Q);$(SDKINC);$(WINDDK)
 # Note that DOS doesn't support an embedded equal sign in a SET statement,
 #   so if we have to execute these SET statements from the DOS command line,
 #   DOS won't accept them.  Thus the options are broken up into ones with
@@ -111,7 +111,7 @@ LSTMAC=
 {$(R)}.asm{$(G)}.obj:
 	set MASM=$(SETMASM5OPT) $(OPTIONS)
 	set INCLUDE=$(ALLINC)
-	masm $(MASM5OPT) $(R)$(@B), $(G)$(@B) $(LSTMAC);
+	$(MASM51B) $(MASM5OPT) $(R)$(@B), $(G)$(@B) $(LSTMAC);
 	set INCLUDE=$(OLDINC)
 	set MASM=$(OLDMASM)
 	@ff $*/,/#
@@ -119,7 +119,7 @@ LSTMAC=
 {$(R)}.asm{$(O)}.obj:
 	set MASM=$(SETMASM5OPT) $(OPTIONS)
 	set INCLUDE=$(ALLINC)
-	masm $(MASM5OPT) $(R)$(@B), $(O)$(@B) $(LSTMAC);
+	$(MASM51B) $(MASM5OPT) $(R)$(@B), $(O)$(@B) $(LSTMAC);
 	set INCLUDE=$(OLDINC)
 	set MASM=$(OLDMASM)
 	@ff $*/,/#
@@ -127,7 +127,7 @@ LSTMAC=
 {$(Q)}.asm{$(O)}.obj:
 	set MASM=$(SETMASM5OPT) $(OPTIONS)
 	set INCLUDE=$(ALLINC)
-	masm $(MASM5OPT) %s $(O)$(@B) $(LSTMAC);
+	$(MASM51B) $(MASM5OPT) %s $(O)$(@B) $(LSTMAC);
 	set INCLUDE=$(OLDINC)
 	set MASM=$(OLDMASM)
 	@ff $*/,/#
@@ -153,14 +153,15 @@ OBJS=				\
 !IFDEF ZMAX
 	$(O)vmaxzmax.obj	\
 !ENDIF			# IFDEF ZMAX
-	$(LH)loadhi.obj 	\
-	$(LH)instinit.obj	\
-	$(LH)instswap.obj	\
+	$(DOSOBJ)loadhi.obj 	\
+	$(DOSOBJ)instinit.obj	\
+	$(DOSOBJ)instswap.obj	\
 	$(O)versret.obj 	\
 	$(O)vmax_ver.obj
 
-ALL: DIR	$(BIN)$(VXDNAME).$(VXDEXT)	$(BINDIR)$(RELNAME).$(RELEXT) \
-	$(BIN)$(VXDNAME).ssf		$(BINDIR)win.ssf
+#ALL: DIR	$(BIN)$(VXDNAME).$(VXDEXT)	$(BINDIR)$(RELNAME).$(RELEXT) \
+#	$(BIN)$(VXDNAME).ssf		$(BINDIR)win.ssf
+ALL: DIR	$(BIN)$(VXDNAME).$(VXDEXT)	$(BINDIR)$(RELNAME).$(RELEXT)
 
 zip:
 	del win3vxd.zip
@@ -192,8 +193,8 @@ $(O)QMAX_OEM.INC: $(Q)QMAX@$(OEM).OEM
 
 $(BIN)$(VXDNAME).map:	$(BIN)$(VXDNAME).$(VXDEXT)
 
-$(BIN)$(VXDNAME).ssf:	$(SWATVXD)RET\swatvxd.map $(SWATVXD)swatvxd.wsg $(BIN)$(VXDNAME).map vmax.wsg
-	mapssf /o -t$*.ssf -w$(SWATVXD)SWATVXD.WSG $(SWATVXD)RET\SWATVXD.MAP -wVMAX.WSG $(BIN)$(VXDNAME).MAP
+# $(BIN)$(VXDNAME).ssf:	$(SWATVXD)RET\swatvxd.map $(SWATVXD)swatvxd.wsg $(BIN)$(VXDNAME).map vmax.wsg
+# 	mapssf /o -t$*.ssf -w$(SWATVXD)SWATVXD.WSG $(SWATVXD)RET\SWATVXD.MAP -wVMAX.WSG $(BIN)$(VXDNAME).MAP
 
 $(BIN)$(VXDNAME).$(VXDEXT):	\
 		$(RELNAME).def	\

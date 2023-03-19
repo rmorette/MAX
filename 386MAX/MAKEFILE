@@ -1,5 +1,3 @@
-#' $Header:   P:/PVCS/MAX/386MAX/MAKEFILE.__V   1.18   08 Jul 1998 12:07:28   BOB  $
-#
 # Makefile for 386MAX
 #
 # Set defaults- conditionals will change these values if needed,
@@ -113,7 +111,7 @@ LSTMAC=
 	 copy %|dpF$(@D)\$(@F) $(@D)\.
 !ELSE
 	 set INCLUDE=$(ALLINC)
-	 masm %s $(MOPT), $(@D)\ $(LSTMAC);
+	 $(MASM51A) %s $(MOPT), $(@D)\ $(LSTMAC);
 	 set INCLUDE=$(OLDINC)
 	 @dispobj $*/w
 !ENDIF
@@ -123,7 +121,7 @@ LSTMAC=
 	 copy %|dpF$(@D)\$(@F) $(@D)\.
 !ELSE
 	 set INCLUDE=$(ALLINC)
-	 masm %s $(MOPT), $(@D)\ $(LSTMAC);
+	 $(MASM51A) %s $(MOPT), $(@D)\ $(LSTMAC);
 	 set INCLUDE=$(OLDINC)
 	 @dispobj $*/w
 !ENDIF
@@ -132,7 +130,7 @@ LSTMAC=
 {$(R)}.asm{$(G)}.obj:
 !IF "$(NEWDIR)" != "Y"
 	 set INCLUDE=$(ALLINC)
-	 masm %s $(MOPT), $(@D)\ $(LSTMAC);
+	 $(MASM51A) %s $(MOPT), $(@D)\ $(LSTMAC);
 	 set INCLUDE=$(OLDINC)
 	 @dispobj $*/w
 !ENDIF
@@ -140,7 +138,7 @@ LSTMAC=
 {$(R)}.asm{$(O)}.obj:
 !IF "$(NEWDIR)" != "Y"
 	 set INCLUDE=$(ALLINC)
-	 masm %s $(MOPT), $(@D)\ $(LSTMAC);
+	 $(MASM51A) %s $(MOPT), $(@D)\ $(LSTMAC);
 	 set INCLUDE=$(OLDINC)
 	 @dispobj $*/w
 !ENDIF
@@ -150,7 +148,7 @@ LSTMAC=
 {$(C)}.asm{$(O)}.obj:
 !IF "$(NEWDIR)" != "Y"
 	 set INCLUDE=$(ALLINC)
-	 masm %s $(MOPT), $(@D)\ $(LSTMAC);
+	 $(MASM51A) %s $(MOPT), $(@D)\ $(LSTMAC);
 	 set INCLUDE=$(OLDINC)
 	 @dispobj $*/w
 !ENDIF
@@ -162,7 +160,7 @@ LSTMAC=
 	 copy %|dpF$(@D)\$(@F) $(@D)\.
 !ELSE
 	 set INCLUDE=$(ALLINC)
-	 masm %s $(MOPT) /dOPTIM, $(@R).opt $(LSTMAC);
+	 $(MASM51A) %s $(MOPT) /dOPTIM, $(@R).opt $(LSTMAC);
 	 set INCLUDE=$(OLDINC)
 	 @dispobj $*.opt/w
 !ENDIF
@@ -171,7 +169,7 @@ LSTMAC=
 {$(R)}.asm{$(O)}.opt:
 !IF "$(NEWDIR)" != "Y"
 	 set INCLUDE=$(ALLINC)
-	 masm %s $(MOPT) /dOPTIM, $(@R).opt $(LSTMAC);
+	 $(MASM51A) %s $(MOPT) /dOPTIM, $(@R).opt $(LSTMAC);
 	 set INCLUDE=$(OLDINC)
 	 @dispobj $*.opt/w
 !ENDIF
@@ -182,7 +180,7 @@ LSTMAC=
 	 copy %|dpF$(@D)\$(@F) $(@D)\.
 !ELSE
 	 set INCLUDE=$(ALLINC)
-	 masm %s $(MOPT), $(@R).nrm $(LSTMAC);
+	 $(MASM51A) %s $(MOPT), $(@R).nrm $(LSTMAC);
 	 set INCLUDE=$(OLDINC)
 	 @dispobj $*.nrm/w
 !ENDIF
@@ -191,7 +189,7 @@ LSTMAC=
 {$(R)}.asm{$(O)}.nrm:
 !IF "$(NEWDIR)" != "Y"
 	 set INCLUDE=$(ALLINC)
-	 masm %s $(MOPT), $(@R).nrm $(LSTMAC);
+	 $(MASM51A) %s $(MOPT), $(@R).nrm $(LSTMAC);
 	 set INCLUDE=$(OLDINC)
 	 @dispobj $*.nrm/w
 !ENDIF
@@ -202,7 +200,7 @@ LSTMAC=
 	 copy %|dpF$(@D)\$(@F) $(@D)\.
 !ELSE
 	 set INCLUDE=$(ALLINC)
-	 masm %s $(MOPT) /dHILO, $(@R).hlo $(LSTMAC);
+	 $(MASM51A) %s $(MOPT) /dHILO, $(@R).hlo $(LSTMAC);
 	 set INCLUDE=$(OLDINC)
 	 @dispobj $*.hlo/w
 !ENDIF
@@ -211,7 +209,7 @@ LSTMAC=
 {$(R)}.asm{$(O)}.hlo:
 !IF "$(NEWDIR)" != "Y"
 	 set INCLUDE=$(ALLINC)
-	 masm %s $(MOPT) /dHILO, $(@R).hlo $(LSTMAC);
+	 $(MASM51A) %s $(MOPT) /dHILO, $(@R).hlo $(LSTMAC);
 	 set INCLUDE=$(OLDINC)
 	 @dispobj $*.hlo/w
 !ENDIF
@@ -600,7 +598,7 @@ $(O)HI.OBJ:	  {$(P)}HILO.ASM $(HILO_ADEP)
 	 copy $(Q)$(O)$(@B).OBJ $(O).
 !ELSE
 	 set INCLUDE=$(ALLINC)
-	 masm %s $(MOPT) /dLOAD$(@B), $* $(LSTMAC);
+	 $(MASM51A) %s $(MOPT) /dLOAD$(@B), $* $(LSTMAC);
 	 set INCLUDE=$(OLDINC)
 	 @dispobj $*/w
 !ENDIF
@@ -612,7 +610,7 @@ $(O)LO.OBJ:	  {$(P)}HILO.ASM $(HILO_ADEP)
 	 copy $(Q)$(O)$(@B).OBJ $(O).
 !ELSE
 	 set INCLUDE=$(ALLINC)
-	 masm %s $(MOPT) /dLOAD$(@B), $* $(LSTMAC);
+	 $(MASM51A) %s $(MOPT) /dLOAD$(@B), $* $(LSTMAC);
 	 set INCLUDE=$(OLDINC)
 	 @dispobj $*/w
 !ENDIF
