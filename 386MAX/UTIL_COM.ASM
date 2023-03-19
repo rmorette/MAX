@@ -384,8 +384,9 @@ endif				; IF @OEM_WIN3
 	 call	 CHECK_CPUID	; Ensure we're on a 386 processor
 	MJ c	 UTIL_ERR_EXIT	; Join common error exit code
 
-	 call	 CHECK_INFO	; Check and display IDN info
-	MJ c	 UTIL_ERR_EXIT	; Jump if something went wrong
+; disable serial check
+;	 call	 CHECK_INFO	; Check and display IDN info
+;	MJ c	 UTIL_ERR_EXIT	; Jump if something went wrong
 
 ; See if we're already installed
 
@@ -740,7 +741,7 @@ Display the version # of 386MAX (already done by copyright notice)
 
 |
 
-	 call	 CHECK_INFO	; Check and display IDN info
+;	 call	 CHECK_INFO	; Check and display IDN info
 				; Return with CF significant
 
 	 ret			; Return to caller
